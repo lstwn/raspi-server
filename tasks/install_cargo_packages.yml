@@ -1,0 +1,6 @@
+---
+- name: Install cargo packages
+  ansible.builtin.shell: "cargo install {{ item }}"
+  register: cargo_output
+  changed_when: "'already installed' not in cargo_output.stderr"
+  loop: "{{ cargo_packages }}"

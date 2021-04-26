@@ -1,0 +1,17 @@
+# no passwords auth for login
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+UsePAM no
+
+# only public key auth for login
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+# no sftp for now (single user)
+# Match group sftp
+#     ChrootDirectory /sftp/%u
+#     X11Forwarding no
+#     AllowTcpForwarding no
+#     PermitTTY no
+#     ForceCommand internal-sftp
+#     PasswordAuthentication yes

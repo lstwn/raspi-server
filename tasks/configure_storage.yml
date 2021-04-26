@@ -1,0 +1,15 @@
+---
+- name: Create mount points
+  ansible.builtin.file:
+    path: "{{ item.point }}"
+    state: directory
+  loop: "{{ mounts }}"
+- name: Mount storages
+  become: true
+  ansible.posix.mount:
+    path: "{{ item.point }}"
+    src: "LABEL={{ item.label }}"
+    fstype: "{{ item.fstype }}"
+    state: present
+    opts: "{{ item.opts }}"
+  loop: "{{ mounts }}"

@@ -1,0 +1,102 @@
+repo_packages:
+  - dnf-plugins-core
+  - git
+  - vim-enhanced
+  - tmux
+  - fish
+  - curl
+  - exa
+  - ripgrep
+  - fd-find
+  - bat
+  - git-delta
+  - hyperfine
+  - traceroute
+  - wireguard-tools
+  - ansible
+  - nodejs
+  - npm
+
+repo_packages_clean:
+
+
+ubuntu_command_line_packages:
+  - git
+  - vim
+  - tmux
+  - fish
+  - ssh
+  - sshfs
+  - curl
+  - ripgrep
+  - fd-find
+  - bat
+  - exfat-fuse
+  - exfat-utils
+  - apt-transport-https
+  - nmap
+  - traceroute
+  - hping3
+  - bind9utils
+  - tcpdump
+  - wireguard
+
+ubuntu_desktop_packages:
+  - firefox
+  - evince
+  - flatpak
+  - wl-clipboard
+  - nautilus
+  - gnome-terminal
+  - nautilus-extension-gnome-terminal
+  - gnome-tweaks
+  - seahorse
+  - gnome-clocks
+  - gnome-calculator
+  - simple-scan
+  - baobab
+  - libreoffice-calc
+  - libreoffice-gtk3
+  - wireshark
+  - ffmpeg
+  - mesa-vulkan-drivers
+  - network-manager-openconnect-gnome
+  - network-manager-openvpn-gnome
+  - steam-installer
+
+ubuntu_latex:
+  - texlive-full
+
+ubuntu_development_packages:
+  - nodejs
+  - npm
+  - python3
+  - python3-pip
+  - make
+  - clang
+  - default-jdk
+
+ubuntu_repo_packages_clean:
+  - gedit
+  - totem
+  - gnome-contacts
+
+flathub_packages:
+  - io.github.celluloid_player.Celluloid
+  - com.github.johnfactotum.Foliate
+  - us.zoom.Zoom
+  - org.signal.Signal
+  - com.belmoussaoui.Authenticator
+
+npm_packages:
+  - '@bitwarden/cli'
+
+pip_packages:
+  - matplotlib
+  - numpy
+  - scipy
+
+cargo_packages:
+  - du-dust
+  - broot
+  - bottom

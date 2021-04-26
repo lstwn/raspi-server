@@ -1,0 +1,13 @@
+---
+- name: Install clang
+  become: true
+  ansible.builtin.dnf:
+    name: clang
+    state: present
+- name: Check if rustup is already installed
+  stat:
+    path: "{{ ansible_env.HOME }}/.rustup"
+  register: rustup_directory
+- name: Install rust via rustup
+  ansible.builtin.command: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+  when: not rustup_directory.stat.exists

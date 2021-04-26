@@ -1,0 +1,33 @@
+---
+# - name: Install GPG keys
+#   become: true
+#   ansible.builtin.dnf:
+#     name: distribution-gpg-keys
+#     state: present
+# - name: Add rpmfusion free
+#   become: true
+#   ansible.builtin.dnf:
+#     # todo variable
+#     name: 'https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm'
+#     state: present
+# - name: Add rpmfusion nonfree
+#   become: true
+#   ansible.builtin.dnf:
+#     # todo variable
+#     name: 'https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-34.noarch.rpm'
+#     state: present
+- name: Install repo packages
+  become: true
+  ansible.builtin.dnf:
+    name: "{{ repo_packages | default([]) }}"
+    state: present
+    update_cache: yes
+- name: Clean repo packages
+  become: true
+  ansible.builtin.dnf:
+    name: "{{ repo_packages_clean | default([]) }}"
+    state: absent
+- name: Autoremove unneeded packages installed as dependencies
+  become: true
+  ansible.builtin.dnf:
+    autoremove: yes

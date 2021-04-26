@@ -1,0 +1,27 @@
+---
+- name: Configure raspi fedora server
+  hosts: all
+  vars:
+    - hostname: LeosPi
+    - default_shell: /usr/bin/fish
+    - github_user: lstwn
+    - dotfiles_repo: git@github.com:lstwn/dotfiles.git
+    - mounts:
+      - { point: "{{ ansible_env.HOME }}/data", label: "LeosToshiba",
+        fstype: "exfat", opts: "defaults,auto,users,rw,nofail,umask=000" }
+  vars_files:
+    - ./vars/packages.yml
+    - ./vars/secrets.yml
+
+  tasks:
+    - import_tasks: ./tasks/configure_auto_updates.yml
+    - import_tasks: ./tasks/install_repo_packages.yml
+    - import_tasks: ./tasks/configure_hostname_and_user.yml
+    - import_tasks: ./tasks/configure_storage.yml
+    - import_tasks: ./tasks/configure_sshd.yml
+    - import_tasks: ./tasks/generate_ssh_keypair_and_publish.yml
+    - import_tasks: ./tasks/configure_dotfiles.yml
+    - import_tasks: ./tasks/install_rust.yml
+    - import_tasks: ./tasks/install_cargo_packages.yml
+    - import_tasks: ./tasks/install_npm_packages.yml
+    - import_tasks: ./tasks/install_docker.yml
