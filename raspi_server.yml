@@ -18,8 +18,8 @@
     - import_tasks: ./tasks/install_repo_packages.yml
     - import_tasks: ./tasks/configure_hostname_and_user.yml
     - import_tasks: ./tasks/configure_storage.yml
-    - import_tasks: ./tasks/configure_sshd.yml
     - import_tasks: ./tasks/generate_ssh_keypair_and_publish.yml
+    - import_tasks: ./tasks/configure_sshd.yml
     - import_tasks: ./tasks/configure_dotfiles.yml
     - import_tasks: ./tasks/install_rust.yml
     - import_tasks: ./tasks/install_cargo_packages.yml

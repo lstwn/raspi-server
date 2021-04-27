@@ -1,7 +1,12 @@
 ---
+- name: Ensure SSH folder exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
 - name: Set authorized keys from github
   ansible.builtin.shell:
     cmd: "curl https://github.com/{{ github_user }}.keys > {{ ansible_env.HOME }}/.ssh/authorized_keys"
+    warn: false
 - name: Copy sshd config
   become: true
   ansible.builtin.copy:
