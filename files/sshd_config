@@ -1,7 +1,9 @@
 # no passwords auth for login
 ChallengeResponseAuthentication no
 PasswordAuthentication no
+# no other auth methods
 UsePAM no
+GSSAPIAuthentication no
 
 # only public key auth for login
 PubkeyAuthentication yes
