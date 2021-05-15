@@ -1,0 +1,27 @@
+---
+- name: Install Prometheus
+  become: true
+  ansible.builtin.dnf:
+    name: "{{ prometheus_packages }}"
+    state: present
+  vars:
+    prometheus_packages:
+      - golang-github-prometheus
+- name: Add port to firewalld
+  become: true
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  loop:
+    - 9090/tcp
+- name: Reload firewalld
+  ansible.builtin.systemd:
+    name: firewalld
+    state: reloaded
+- name: Start prometheus service
+  become: true
+  ansible.builtin.systemd:
+    name: prometheus
+    state: started
+    enabled: yes

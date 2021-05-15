@@ -1,0 +1,27 @@
+---
+- name: Install Grafana
+  become: true
+  ansible.builtin.dnf:
+    name: "{{ grafana_packages }}"
+    state: present
+  vars:
+    grafana_packages:
+      - grafana
+- name: Add port to firewalld
+  become: true
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  loop:
+    - 3000/tcp
+- name: Reload firewalld
+  ansible.builtin.systemd:
+    name: firewalld
+    state: reloaded
+- name: Start grafana service
+  become: true
+  ansible.builtin.systemd:
+    name: grafana-server
+    state: started
+    enabled: yes

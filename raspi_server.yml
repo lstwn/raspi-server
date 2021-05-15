@@ -8,10 +8,12 @@
     - dotfiles_repo: git@github.com:lstwn/dotfiles.git
     - mounts:
       - { point: "{{ ansible_env.HOME }}/data", label: "LeosToshiba",
-        fstype: "exfat", opts: "defaults,auto,users,rw,nofail,umask=000" }
+        fstype: "exfat", opts: "defaults,nofail,uid=1000,gid=1000" }
+  vars_prompt:
+    - name: github_access_token
+      prompt: GitHub access token
   vars_files:
     - ./vars/packages.yml
-    - ./vars/secrets.yml
 
   tasks:
     - import_tasks: ./tasks/configure_auto_updates.yml
@@ -25,3 +27,5 @@
     - import_tasks: ./tasks/install_cargo_packages.yml
     - import_tasks: ./tasks/install_npm_packages.yml
     - import_tasks: ./tasks/install_docker.yml
+    - import_tasks: ./tasks/install_prometheus.yml
+    - import_tasks: ./tasks/install_grafana.yml
