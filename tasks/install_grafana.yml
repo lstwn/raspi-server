@@ -16,6 +16,7 @@
   loop:
     - 3000/tcp
 - name: Reload firewalld
+  become: true
   ansible.builtin.systemd:
     name: firewalld
     state: reloaded

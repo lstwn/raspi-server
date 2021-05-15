@@ -14,8 +14,9 @@
     permanent: yes
     state: enabled
   loop:
-    - 9090/tcp
+    - 8090/tcp
 - name: Reload firewalld
+  become: true
   ansible.builtin.systemd:
     name: firewalld
     state: reloaded
@@ -25,3 +26,4 @@
     name: prometheus
     state: started
     enabled: yes
+# TODO: add different port in /etc/sysconfig/prometheus
