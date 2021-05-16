@@ -23,9 +23,10 @@
     - import_tasks: ./tasks/generate_ssh_keypair_and_publish.yml
     - import_tasks: ./tasks/configure_sshd.yml
     - import_tasks: ./tasks/configure_dotfiles.yml
+    - import_tasks: ./tasks/install_mosh.yml
     - import_tasks: ./tasks/install_rust.yml
     - import_tasks: ./tasks/install_cargo_packages.yml
     - import_tasks: ./tasks/install_npm_packages.yml
     - import_tasks: ./tasks/install_docker.yml
-    - import_tasks: ./tasks/install_prometheus.yml
-    - import_tasks: ./tasks/install_grafana.yml
+    # - import_tasks: ./tasks/install_prometheus.yml
+    # - import_tasks: ./tasks/install_grafana.yml

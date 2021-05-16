@@ -9,6 +9,9 @@ GSSAPIAuthentication no
 PubkeyAuthentication yes
 AuthorizedKeysFile .ssh/authorized_keys
 
+# no env var forwarding from clients (fixes LC* env var warnings)
+AcceptEnv no
+
 # no sftp for now (single user)
 # Match group sftp
 #     ChrootDirectory /sftp/%u

@@ -1,0 +1,20 @@
+---
+- name: Install Mosh
+  become: true
+  ansible.builtin.dnf:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - mosh
+- name: Allow Mosh traffic in firewalld
+  become: true
+  firewalld:
+    service: mosh
+    permanent: yes
+    state: enabled
+- name: Reload firewalld
+  become: true
+  ansible.builtin.systemd:
+    name: firewalld
+    state: reloaded
